@@ -19,6 +19,8 @@ $app->group(['namespace' => 'App\Http\Controllers'], function () use ($app) {
     $app->get('/locations/{id}', 'LocationController@show');
     $app->get('/locations/{id}/events', 'LocationController@events');
 
+    $app->post('/locations/{id}/favorite', 'LocationController@favorite');
+
     $app->get('/favorites', 'FavoriteController@all');
 
     $app->get('/events', 'EventController@all');

@@ -5,4 +5,9 @@ use Illuminate\Database\Eloquent\Model;
 class Location extends Model
 {
     protected $fillable = ['name', 'description', 'lat', 'lon'];
+
+    public function favorites()
+    {
+        return $this->belongsToMany('App\Entities\Favorite');
+    }
 }
