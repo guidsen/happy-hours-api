@@ -10,4 +10,9 @@ class Location extends Model
     {
         return $this->belongsToMany('App\Entities\Favorite');
     }
+
+    public function events()
+    {
+        return $this->hasMany('App\Entities\Event');
+    }
 }
