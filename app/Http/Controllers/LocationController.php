@@ -12,20 +12,14 @@ class LocationController extends Controller
     public function all(Request $request)
     {
         if ($request->has('name'))
-            return response()->json(Location::whereHas('events', function ($event) {
-                $event->where('day_of_week', Carbon::now()->dayOfWeek);
-            })->whereName($request->get('name'))->first());
+            return response()->json(Location::with('events')->whereName($request->get('name'))->first());
 
-        return response()->json(Location::whereHas('events', function ($event) {
-            $event->where('day_of_week', Carbon::now()->dayOfWeek);
-        })->get());
+        return response()->json(Location::with('events')->get());
     }
 
     public function show($id)
     {
-        return response()->json(Location::with(['events' => function ($event) {
-            $event->where('day_of_week', Carbon::now()->dayOfWeek);
-        }])->find($id));
+        return response()->json(Location::with('events')->find($id));
     }
 
     public function events($id)
