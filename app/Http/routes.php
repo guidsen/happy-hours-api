@@ -22,6 +22,8 @@ $app->group(['namespace' => 'App\Http\Controllers'], function () use ($app) {
     $app->get('/locations/{id}', 'LocationController@show');
     $app->get('/locations/{id}/events', 'LocationController@events');
 
+
+    /** @var locations/{id}/favorites?facebook_id=FACEBOOK_ID $app */
     $app->post('/locations/{id}/favorite', 'LocationController@favorite');
 
     $app->get('/events', 'EventController@all');

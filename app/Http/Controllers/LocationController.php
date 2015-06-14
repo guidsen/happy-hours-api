@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Entities\Event;
+use App\Entities\User;
 use App\Entities\Favorite;
 use App\Entities\Location;
 use Illuminate\Http\Request;
@@ -26,7 +27,8 @@ class LocationController extends Controller
 
     public function favorite(Request $request, $id)
     {
-        Favorite::create(['user_id' => $request->input('user_id'), 'location_id' => $id]);
+        $user = User::where('facebook_id', $request->input('facebook_id'));
+        Favorite::create(['user_id' => $user->id, 'location_id' => $id]);
         return response()->json(['message' => 'Created.']);
     }
 }
