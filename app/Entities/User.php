@@ -4,6 +4,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-    protected $fillable = ['email', 'password'];
+    protected $fillable = ['facebook_id', 'email', 'password'];
     protected $hidden = ['password'];
 }

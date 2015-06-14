@@ -12,6 +12,8 @@
 */
 
 $app->group(['namespace' => 'App\Http\Controllers'], function () use ($app) {
+    $app->get('auth', 'AuthController@authenticate');
+
     $app->get('/users', 'UserController@all');
     $app->get('/users/{id}', 'UserController@show');
 
