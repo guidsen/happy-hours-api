@@ -17,6 +17,11 @@ class LocationController extends Controller
         return response()->json(Location::with('events')->get());
     }
 
+    public function tests()
+    {
+        return response()->json(Location::with('events')->where('test', 1)->get());
+    }
+
     public function show($id)
     {
         return response()->json(Location::with('events')->find($id));
